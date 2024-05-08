@@ -12,6 +12,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
+
 def main():
     uri = "mongodb+srv://admin:JKEw0feoZCxOE0LS@cluster0.m5iuzzq.mongodb.net/?retryWrites=true&w=majority" \
           "&appName=Cluster0"
@@ -52,9 +53,9 @@ def webscrape_aldi(driver, keyword, category):
     driver.get('https://groceries.aldi.co.uk/en-GB/Search?keywords=' + keyword)
 
     # accept cookies
-    #WebDriverWait(driver, 10).until(
+    # WebDriverWait(driver, 10).until(
     #    EC.element_to_be_clickable((By.XPATH, "//button[@id='onetrust-accept-btn-handler']"))).click()
-    #print("Cookies accepted")
+    # print("Cookies accepted")
 
     # wait until items load
     WebDriverWait(driver, 10).until(
@@ -176,15 +177,15 @@ def webscrape_aldi(driver, keyword, category):
                 EC.element_to_be_clickable(driver.find_element(By.XPATH, "//a[@class='pull-left']"))).click()
 
         # navigate to the next page
-        #while True:
-            #try:
+        # while True:
+        # try:
         ActionChains(driver).move_to_element(driver.find_element(By.XPATH, "//a[@title='Next']")).click().perform()
-        #WebDriverWait(driver, 10).until(
+        # WebDriverWait(driver, 10).until(
         #    EC.element_to_be_clickable(driver.find_element(By.XPATH, "//a[@title='Next']"))).click()
         print("NEXT PAGE")
-                #break
-            #except:
-                #driver.refresh()
+        # break
+        # except:
+        # driver.refresh()
 
 
 # Send a ping to confirm a successful connection
